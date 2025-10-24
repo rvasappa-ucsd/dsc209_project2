@@ -80,11 +80,11 @@ Email: rvasappanavara@ucsd.edu
 Course: DSC209 - Data Visualization (Fall 2025)
 
 ## Deployment
-To deploy to GitHub Pages:
-1. Push this repository to GitHub
-2. Enable GitHub Pages in repository settings
-3. Select the main branch as source
-4. Access at: `https://[username].github.io/dsc209_project2/project2_report.html`
+This project is deployed on GitHub Pages and publicly accessible at:
+
+**🌐 Live Project URL:** https://rvasappa-ucsd.github.io/dsc209_project2/
+
+The site automatically redirects to the main project report with interactive visualizations.
 
 ## Notes
 - 2020 data excluded from analysis (incomplete)
