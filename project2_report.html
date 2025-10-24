@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Project 2 Report</title>
+    <style>
+      :root {
+        --color-neutral-95: hsl(220 10% 95%);
+        --color-neutral-90: hsl(220 10% 90%);
+        --color-neutral-80: hsl(220 10% 80%);
+        --color-neutral-70: hsl(220 10% 70%);
+        --color-neutral-60: hsl(220 10% 60%);
+        --color-neutral-50: hsl(220 10% 50%);
+        --color-neutral-40: hsl(220 10% 40%);
+        --color-neutral-30: hsl(220 10% 30%);
+        --color-neutral-20: hsl(220 10% 20%);
+        --color-neutral-10: hsl(220 10% 10%);
+      }
+
+      html {
+        font: 100%/1.5 system-ui;
+        counter-reset: figure;
+        background: var(--color-neutral-95);
+        max-width: min(75vw, 80em);
+        margin: 0 auto;
+      }
+
+      /* Headings */
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1.1;
+        font-weight: 600;
+        text-wrap: balance;
+      }
+
+      h1,
+      h2 {
+        border-bottom: 1px solid var(--color-neutral-80);
+        padding-bottom: 0.2em;
+      }
+
+      h1 {
+        margin-block: 1em 0.5rem;
+        font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+        font-weight: 800;
+
+        small {
+          display: block;
+          width: fit-content;
+          padding: 0.2em 0.5em;
+          margin-inline: auto;
+          color: white;
+          background: var(--color-neutral-40);
+          font-size: 40%;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+      }
+
+      h2 {
+        font-size: 180%;
+        color: var(--color-neutral-30);
+      }
+
+      h3 {
+        font-size: 130%;
+      }
+
+      /* Lists */
+
+      ul,
+      ol {
+        padding-inline-start: 2em;
+      }
+
+      li {
+        &::marker {
+          color: var(--color-neutral-40);
+        }
+
+        + li {
+          margin-top: 0.2em;
+        }
+      }
+
+      /* Sectioning elements */
+
+      header {
+        padding-block: 1em;
+        text-align: center;
+      }
+
+      main {
+        background: white;
+        color: var(--color-neutral-20);
+        border-radius: 1rem;
+        padding: 0.1rem 2rem;
+      }
+
+      /* Figures */
+
+      figure {
+        margin: 1em 0;
+        padding: 0.5rem;
+        margin-inline: -0.5em;
+        border: 1px solid var(--color-neutral-80);
+        box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+        text-align: center;
+        background: white;
+
+        > figcaption {
+          font: 500 75% var(--font-sans);
+          background: var(--color-neutral-95);
+          padding: 0.5rem;
+          margin: -0.5rem;
+          margin-top: 0.5rem;
+          counter-increment: figure;
+          text-align: left;
+
+          &::before {
+            content: 'Figure ' counter(figure) ': ';
+            font-weight: bold;
+            color: var(--color-neutral-40);
+          }
+
+          a:not(:hover, :focus, :active) {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: color-mix(
+              in lab,
+              currentColor,
+              transparent 70%
+            );
+          }
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <small>Assignment 4</small>
+        Persuasive or Deceptive Visualization?
+      </h1>
+
+      <p><strong>Raghav Vasappanavara</strong> — <em>rvasappanavara@ucsd.edu</em></p>
+    </header>
+
+    <main>
+      <h2>Proposition: NYPD accountability has significantly improved since 2010, with substantiation rates of civilian complaints rising from 17.5% to over 30%</h2>
+
+      <section>
+        <h3>FOR the Proposition</h3>
+
+        <figure>
+          <iframe src="visualization_for.html" width="100%" height="650" frameborder="0" style="border: none;"></iframe>
+          <figcaption>
+            Interactive visualization emphasizing the upward trend in NYPD complaint substantiation rates (2010-2019). 
+            The rising green area and trend line suggest consistent improvement in police accountability metrics over the decade.
+            <a href="visualization_for.html" target="_blank">Open in new tab</a>
+          </figcaption>
+        </figure>
+
+        <p><strong>Design Decisions and Rationale:</strong></p>
+        <p><em>Scoring Guide: -2 (fully deceptive) to +2 (fully earnest). Negative scores indicate techniques that mislead; positive scores indicate transparency.</em></p>
+
+        <ul>
+          <li>
+            <strong>Truncated Y-Axis (Starting at 15% instead of 0%)</strong> — <em>Score: -1.5</em><br>
+            By starting the y-axis at 15% rather than 0%, the 13-percentage-point increase appears much steeper and more dramatic. This classic deceptive technique exaggerates visual impact but is intentionally detectable—careful viewers will notice the axis doesn't start at zero. The manipulation creates immediate persuasive effect while remaining discoverable upon inspection.
+          </li>
+          <li>
+            <strong>Cherry-Picked Time Range (2010-2019 only)</strong> — <em>Score: -1.0</em><br>
+            Selecting only the 2010-2019 window excludes earlier years with more volatility and incomplete 2020 data. This temporal framing creates a narrative of sustained improvement by choosing a convenient starting point (17.5%) and endpoint (30.9%). The omission of historical context is noticeable when examining the full dataset.
+          </li>
+          <li>
+            <strong>Area Fill with Green Color Psychology</strong> — <em>Score: -0.5</em><br>
+            The filled area under the curve creates visual mass that emphasizes growth, while bright green psychologically connotes "positive" and "success." This subtle persuasive choice influences emotional response without overtly manipulating data. Area fills make increases look more substantial while minimizing decreases.
+          </li>
+          <li>
+            <strong>Polynomial Trend Line</strong> — <em>Score: -1.0</em><br>
+            The dashed trend line smooths over year-to-year volatility, particularly the sharp 2017 drop from 31.9% to 25.3%. This suggests continuous improvement while concealing fluctuations. Viewers can detect this by comparing the smooth curve to actual data points, especially during 2015-2017.
+          </li>
+          <li>
+            <strong>Emphatic Language and Selective Annotations</strong> — <em>Score: -0.5</em><br>
+            The title "Rising Accountability" and "Major Improvement" frame data positively. The annotation highlights the 2015 peak (35%) and calculates a "+76% increase" using percentage-of-percentage math that sounds more impressive than the 13.4-percentage-point change. This persuasive framing is easily identifiable by critical readers.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>AGAINST the Proposition</h3>
+
+        <figure>
+          <iframe src="visualization_against.html" width="100%" height="950" frameborder="0" style="border: none;"></iframe>
+          <figcaption>
+            Multi-panel interactive visualization revealing the volatility and limited scope of substantiation rate changes over 20 years (2000-2019). 
+            The top panel shows rates within proper 0-100% scale context, while the bottom panel depicts the absolute numbers of substantiated versus 
+            unsubstantiated complaints, emphasizing that the vast majority of complaints remain unsubstantiated even at "record high" rates.
+            <a href="visualization_against.html" target="_blank">Open in new tab</a>
+          </figcaption>
+        </figure>
+
+        <p><strong>Design Decisions and Rationale:</strong></p>
+        <p><em>Scoring Guide: -2 (fully deceptive) to +2 (fully earnest). Negative scores indicate techniques that mislead; positive scores indicate transparency.</em></p>
+
+        <ul>
+          <li>
+            <strong>Full Y-Axis Scale (0-40%)</strong> — <em>Score: +1.5</em><br>
+            The y-axis starts at 0%, following best practices and allowing accurate perception of change magnitude. When viewed on this scale, the fluctuations from 17.5% to 30.9% appear much less dramatic than in the FOR visualization. This earnest choice reveals we're discussing variations in the lower third of the possible range, not massive swings. Score isn't +2.0 because the axis caps at 40% rather than 100%.
+          </li>
+          <li>
+            <strong>Extended Time Range (2000-2019)</strong> — <em>Score: +1.0</em><br>
+            Including the full 20-year dataset reveals significant volatility over time, with multiple peaks and valleys. The 20-year average line shows recent rates aren't dramatically different from historical norms. This contextualization counters the "sustained improvement" narrative by exposing that the 2015 peak was followed by a 2017 drop. Still not perfectly earnest because pre-2000 data and incomplete 2020 data are excluded.
+          </li>
+          <li>
+            <strong>Stacked Bar Chart (Absolute Numbers)</strong> — <em>Score: +0.5</em><br>
+            The second panel shifts from percentages to raw counts, visually emphasizing the volume of unsubstantiated complaints (gray) versus substantiated ones (blue). This recontextualizes "improvement" by showing that even at 35% substantiation, 65% of complaints remain unsubstantiated. Partially earnest—accurately represents data but the gray color and stacked format psychologically emphasize failure.
+          </li>
+          <li>
+            <strong>Annotation of 2017 Drop</strong> — <em>Score: -0.5</em><br>
+            The annotation "2017: Dropped to 25% — Progress reversed" strategically highlights when rates fell sharply, contradicting the "consistent improvement" narrative. This is selective emphasis (not all fluctuations are annotated), making it somewhat deceptive, but it effectively challenges the opposing viewpoint by drawing attention to contradictory evidence.
+          </li>
+          <li>
+            <strong>Skeptical Title and Contextual Framing</strong> — <em>Score: -0.5</em><br>
+            The title "The Accountability Illusion" and subtitle "Remains Inconsistent" use language that frames data skeptically. The annotation "Even at 'record high', 65% of complaints go unsubstantiated" provides critical context. These textual choices are persuasive framing rather than neutral reporting, but they're overtly identifiable as interpretive stance, making them discoverable as rhetorical strategy.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Final Reflection</h2>
+
+        <p>
+          Creating opposing visualizations from the same CCRB dataset revealed how design choices fundamentally shape interpretation. The most challenging aspect was calibrating deceptiveness to be <em>intentionally detectable</em>—making techniques persuasive enough to influence casual viewers while obvious enough for critical analysis. The truncated axis and cherry-picked timeframe in the FOR visualization needed to exaggerate trends without destroying credibility.
+        </p>
+
+        <p>
+          This project explores ethical visualization as <strong>transparent argumentation</strong> where design choices are discoverable and defensible. Key principles include providing sufficient context (time ranges, axis scales, sources), ensuring visual encodings don't grossly distort data, and acknowledging that framing is inevitable but should be arguable. The distinction between persuasion and deception lies in discoverability: acceptable techniques remain visible upon inspection and can be justified, while misleading ones hide manipulations that cannot be defended.
+        </p>
+
+        <p>
+          This project demonstrates that data visualization is rhetoric, not objective truth-telling. The same dataset yielded contradictory but technically accurate stories through countless micro-decisions about scales, colors, annotations, and language.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
